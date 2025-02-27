@@ -11,13 +11,14 @@ function SigninComponent() {
     username:"",
     password:""
   })
+  const navigate= useNavigate();
   const sendRequest= async()=>{
-    const navigaṭe= useNavigate();
     try{
       const response=await  axios.post(`${DATABASE_URL}/api/v1/user/signin`,inputValues)
       const jwt= await response.data
+      console.log(jwt)
       localStorage.setItem("token",jwt)
-      navigaṭe("/blogs")
+      navigate("/blogs")
         }    catch(e){
       // send alert that the request failed
       return <div>
@@ -47,7 +48,7 @@ function SigninComponent() {
                   })
                 }}/>
                 </div>
-                <button onClick={sendRequest} className="bg-black text-white rounded p-1 mt-2"> Signin</button>
+                <button onClick={sendRequest} className="bg-black text-white rounded p-1 mt-2 cursor-pointer"> Signin</button>
              </div>
       
 
