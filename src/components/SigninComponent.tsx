@@ -7,15 +7,15 @@ import { DATABASE_URL } from "../config";
 
 
 function SigninComponent() {
+  const navigate= useNavigate();
   const [inputValues, setInputValues]= useState<SigninInput>({
     username:"",
     password:""
   })
-  const navigate= useNavigate();
   const sendRequest= async()=>{
     try{
       const response=await  axios.post(`${DATABASE_URL}/api/v1/user/signin`,inputValues)
-      const jwt= await response.data
+      const jwt= await response.data.jwt||"";
       console.log(jwt)
       localStorage.setItem("token",jwt)
       navigate("/blogs")
