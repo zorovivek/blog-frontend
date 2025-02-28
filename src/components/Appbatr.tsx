@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import { Avatar } from "./BlogSingle"
 
 export const Appbar=()=>{
-    return <div className="flex justify-between items-center border-b  p-4  md:w-screen">
+    return <div className="flex justify-between items-center border-b  p-4  md:w-screen pr-4">
        <Link to={"/blogs"}>
         <div className="cursor-pointer">
             Medium
